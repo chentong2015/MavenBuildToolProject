@@ -6,13 +6,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="base-antora-playbook" />
-        <module name="base-freemarker-template" />
-        <module name="base-asciidoctor-documentation" />
         <module name="maven-wrapper" />
-        <module name="repo-nexus-deploy" />
-        <module name="pom-architect-design" />
+        <module name="design-architect" />
+        <module name="asciidoctor-plugin" />
+        <module name="nexus-repository" />
+        <module name="parent-spring-boot" />
+        <module name="freemarker-template" />
+        <module name="application" />
+        <module name="install" />
+        <module name="app-core" />
+        <module name="antora-playbook" />
+        <module name="child" />
+        <module name="deployment" />
+        <module name="javadoc-plugin" />
       </profile>
     </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="parent-spring-boot" options="-parameters" />
+    </option>
   </component>
 </project>

@@ -1,0 +1,59 @@
+JavaDoc插件的高级用法  自定义输出的文档
+
+<plugin>
+   <groupId>org.apache.maven.plugins</groupId>
+   <artifactId>maven-javadoc-plugin</artifactId>
+   <version>${javadoc.jdk11version}</version>
+   <configuration>
+       <outputDirectory>${project.build.directory}</outputDirectory>
+
+       TODO. 设置生成JavaDoc时使用的编码格式(当源码中包含特殊字符时)
+       <configuration>
+            <encoding>UTF-8</encoding>
+       </configuration>
+
+       <!-- 自定义实现输出的文档格式, 在新的模块中实现 -->
+       <doclet>docgen.scenarios.legacy.ScenariosDoclet</doclet>
+       <docletArtifacts>
+           <docletArtifact>
+               <groupId>com.sun.activation</groupId>
+               <artifactId>javax.activation</artifactId>
+               <version>1.2.0</version>
+           </docletArtifact>
+       </docletArtifacts>
+
+       <show>private</show>
+
+       <additionalDependencies>
+           <additionalDependency>
+               <groupId>qa.application.test.rt</groupId>
+               <artifactId>rt-engine-api</artifactId>
+               <version>${quality.runtime.version}</version>
+           </additionalDependency>
+       </additionalDependencies>
+   </configuration>
+
+   <!-- 插件中还可以设置所依赖的插件 -->
+   <dependencies>
+       <dependency>
+           <groupId>commons-io</groupId>
+           <artifactId>commons-io</artifactId>
+           <version>2.3</version>
+       </dependency>
+       <dependency>
+           <groupId>org.codehaus.plexus</groupId>
+           <artifactId>plexus-archiver</artifactId>
+           <version>2.2</version>
+       </dependency>
+   </dependencies>
+
+   <executions>
+       <execution>
+           <id>generate-java-doc</id>
+           <goals>
+               <goal>javadoc</goal>
+           </goals>
+           <phase>prepare-package</phase>
+       </execution>
+   </executions>
+</plugin>

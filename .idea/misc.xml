@@ -9,6 +9,17 @@
         <option value="$PROJECT_DIR$/repo-nexus-deploy/pom.xml" />
         <option value="$PROJECT_DIR$/pom-architect-design/pom.xml" />
         <option value="$PROJECT_DIR$/maven-wrapper/pom.xml" />
+        <option value="$PROJECT_DIR$/pom-architect-design/parent/pom.xml" />
+        <option value="$PROJECT_DIR$/pom-architect-design/child/pom.xml" />
+        <option value="$PROJECT_DIR$/pom-architect-design/parent-spring-boot/pom.xml" />
+        <option value="$PROJECT_DIR$/pom-architect-design/project/pom.xml" />
+        <option value="$PROJECT_DIR$/design-architect/pom.xml" />
+        <option value="$PROJECT_DIR$/design-architect/child/pom.xml" />
+        <option value="$PROJECT_DIR$/design-architect/parent/pom.xml" />
+        <option value="$PROJECT_DIR$/design-architect/parent-spring-boot/pom.xml" />
+        <option value="$PROJECT_DIR$/design-architect/project/pom.xml" />
+        <option value="$PROJECT_DIR$/nexus-repository/pom.xml" />
+        <option value="$PROJECT_DIR$/documentations/pom.xml" />
       </list>
     </option>
   </component>
