@@ -1,0 +1,6 @@
+// 整个文档的启动和配置信息
+name: doc-documentation
+title: My Java Maven Doc
+version: build
+nav:
+  - modules/nav.adoc

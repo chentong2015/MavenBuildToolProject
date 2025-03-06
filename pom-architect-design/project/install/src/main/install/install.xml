@@ -1,0 +1,21 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.1
+          http://maven.apache.org/xsd/assembly-2.1.1.xsd">
+    <id>package</id>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <!-- 通过maven-assembly-plugin插件, 将指定文件集成打包, 以指定的格式输出到指定的路径下面 -->
+    <fileSets>
+        <fileSet>
+            <!-- 指定的文件源目录 -->
+            <directory>/target</directory>
+            <includes>
+                <include>install-v1.0.0-SNAPSHOT.jar</include>
+            </includes>
+
+            <!-- 自定义的结果目录: 该结果目录是指生成的<format>tar.gz</format>文件的相对路径 -->
+            <outputDirectory>my-another-folder/</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

@@ -1,0 +1,3 @@
+== 提供页面共享的片段
+
+可以通过include::partial$<PARTIAL_NAME>[]来引用

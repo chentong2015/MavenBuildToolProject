@@ -1,0 +1,7 @@
+== 导航页面
+
+添加页面跳转链接, 使用相对路径进行定位
+
+xref:pages/java-doc.adoc[Java doc page]
+
+xref:pages/maven-doc.adoc[Maven doc page]

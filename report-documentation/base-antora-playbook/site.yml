@@ -1,0 +1,9 @@
+site:
+  title: Java Maven Documentation
+  url: http://www.chentong.com
+  start_page: base-maven-documentation::index.adoc 指定启动的index页面
+content:
+  sources:
+    - url: ../../
+      branches: HEAD
+      start_path: ...

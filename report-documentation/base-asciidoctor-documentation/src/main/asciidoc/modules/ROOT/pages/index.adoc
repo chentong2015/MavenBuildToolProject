@@ -1,0 +1,23 @@
+
+== Adoc Documentation
+
+== Base Java Application
+
+提供各种语言source的支持
+[source,java]
+----
+public interface MyClientInterface {
+
+   @RequestMapping(method = RequestMethod.GET, value = "/v1/testing")
+   List<Object> getObjects();
+}
+----
+
+添加note注释
+[note]
+====
+. This is the note of this documentation
+====
+
+添加Web链接
+https://www.google.com[Agent-based ReST Component]

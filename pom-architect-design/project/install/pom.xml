@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>project</artifactId>
+        <groupId>com.pom.master</groupId>
+        <version>v1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>install</artifactId>
+    <name>POM : Master : Install</name>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+
+            <!-- TODO. 通过插件，生成一个可执行的jar包，设置指定的启动main() -->
+            <plugin>
+                <!-- TODO. 该插件的groupId是默认的，无需添加 -->
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <!-- 设置在构建的jar包中启动的主Class是什么 -->
+                    <archive>
+                        <manifest>
+                            <mainClass>org.sample.MainAppClass</mainClass>
+                        </manifest>
+                    </archive>
+                    <!-- 生成jar的名称描述，后缀
+                    TODO. 必须添加，否则会抛出异常 Error reading assemblies: No assembly descriptors found. -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <!-- single：jar包中会包含 META-INF/MANIFEST.MF file of the resulting JAR -->
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- TODO. Apache Maven Assembly Plugin 整个项目装配的插件
+                   自动装配的插件 https://maven.apache.org/plugins/maven-assembly-plugin/assembly.html
+                 combine project output into a single distributable archive that also
+                 contains dependencies, modules, site documentation, and other files -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <!-- TODO. 在集成的execution执行的package阶段，打包和配置相关的信息 -->
+                    <execution>
+                        <id>generate-demo-zip-package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <formats>
+                                <format>zip</format>
+                            </formats>
+                            <descriptors>
+                                <descriptor>src/main/install/install-setups.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+
+                    <!-- TODO. 这里生成的压缩包，可以解压进行部署 -->
+                    <execution>
+                        <id>generate-demo-package</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <formats>
+                                <format>tar.gz</format>
+                            </formats>
+                            <descriptors>
+                                <descriptor>src/main/install/install.xml</descriptor>
+                            </descriptors>
+                            <finalName>demo-package</finalName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

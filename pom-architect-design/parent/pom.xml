@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>parent</groupId>
+    <artifactId>parent</artifactId>
+    <version>v1.0.build-SNAPSHOT</version>
+    <name>parent component</name>
+
+    <!-- TODO. 设置pom打包类型 -->
+    <packaging>pom</packaging>
+
+    <!-- 构建配置的属性值, 方便更新和替换: 版本号是作为唯一的变量 -->
+    <properties>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+        <project.version>v1.0.build</project.version>
+        <spring.boot.starter.version>2.6.6</spring.boot.starter.version>
+        <spring-webmvc.version>5.3.4</spring-webmvc.version>
+    </properties>
+
+    <!-- TODO. 依赖管理：centralizing dependency information 集中依赖的信息
+        1. 如果需要在parent module中运行，则需要将<dependencies>置于外部
+        2. 同时管理对于所有的child module的dependency依赖，提供共享的配置
+        3. 在child中只需要提供部分的信息(groupId,artifactId), child module的version版本号会自动的设置 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>2.6.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-webmvc.version}</version>
+               <!-- <type>war</type> 非默认的类型 -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+      <!-- parent作为纯的pom, 不做开发并不提供具体的dependency依赖 -->
+    </dependencies>
+
+    <build>
+        <!-- TODO 插件管理: 它旨在配置继承自此的项目构建，它的继承类可以对其重写
+                  在继承child中，只需要提供groupId和artifactId即可
+           configuring plugin information for this particular project build
+           The children have every right to override pluginManagement definitions. -->
+        <pluginManagement>
+            <plugins>
+                <!-- Install the built artifact into the local repository. 安装到本地的仓库 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.4</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

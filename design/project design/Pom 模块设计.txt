@@ -1,0 +1,31 @@
+TODO. <packaging>pom</packaging>
+ pom打包类型的模块通常不包含自身的Code代码, 用于管理模块和项目依赖以及项目的插件等
+
+1. 提供依赖集中管理的parent项目 => 被Child模块所使用
+   最顶层的pom打包配置，将整个module作为一个pom来处理
+   pom is basically a container of submodules, jar is for submodule
+2. 提供依赖集中管理的pom项目 => 被Import之后使用
+   该pom项目的上层不应该再包含别的pom.xml，而作为顶层模块
+
+pom.xml 总外层项目模块
+- module 1 子模块
+  > 设置父级<parent>关联，确定一致性<artifactId><groupId> !! 引用父级统一管理的依赖
+  > 设置打包的类型<packaging>pom</packaging>
+  > 自定义子模块的<artifactId>，覆盖父级<artifactId>的名称 !!
+  - child 1
+    > 设置父级<parent>关联，确定一致性<artifactId><groupId>
+    > 默认打包类型<packaging>jar</packaging>
+  - child 2
+    > 设置父级<parent>关联，确定一致性<artifactId><groupId>
+    > 默认打包类型<packaging>jar</packaging>
+  - child 3
+    > 如果引用child 2作为依赖的dependency
+      在构建child 3时需要先将child 2成功构建
+- module 2 子模块
+  > 设置<parent>
+  > 设置<packaging>
+  > 设置<artifactId>
+
+bom / parent模块设计
+ - 将项目中所有使用到的依赖提取到独立的pom module中，使用<dependencyManagement>统一管理
+ - 在module之外的其他项目中import该pom依赖项目，继承统一的版本号

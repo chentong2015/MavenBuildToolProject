@@ -1,0 +1,9 @@
+Transitive Dependencies
+  - Excluded/Optional Dependencies
+Dependency Scope
+Dependency Management
+  - Importing Dependencies
+  - Bill of Materials (BOM) POMs
+System Dependencies
+
+https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html

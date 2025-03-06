@@ -1,0 +1,4 @@
+https://freemarker.apache.org/
+
+Template + data-model = output
+将文件模板和数据模型结合, 生成指定格式的文件报告输出

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- TODO. 设置相对路径，指定引用的parent pom(全局的配置)
+          1. 创建子模块时，默认使用顶级的pom文件作为parent
+          2. 如果parent在本地，则相对路径定位在本地的POM文件上,
+             relativePath可以设置到项目外相对路径下的POM文件
+          3. 可以使用同级的pom文件作为相对路径 -->
+    <parent>
+        <groupId>parent</groupId>
+        <artifactId>parent</artifactId>
+        <version>v1.0.build-SNAPSHOT</version>
+        <relativePath>../parent/pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>child</artifactId>
+    <packaging>jar</packaging>
+    <!-- 显示在maven控制界面上的名称 -->
+    <name>child component</name>
+
+    <!-- TODO. 由于parent中的<dependencyManagement>的设置，在继承的子pom中只需要配置两个信息
+         This allows us to shorthand the identity set to {groupId, artifactId},
+         since the default for the type field is jar 如果不是默认的，则必须添加
+         and the default classifier is null. -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <!-- 版本号从parent dependencyManagement中确定 -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <!-- <type>war</type>
+            This is not a jar dependency, so we must specify type. -->
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- TODO. 通过<pluginManagement>的配置，在child中可以省略version的设置 -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

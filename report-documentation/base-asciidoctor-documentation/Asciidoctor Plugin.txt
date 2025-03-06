@@ -1,0 +1,2 @@
+https://docs.asciidoctor.org/maven-tools/latest/
+https://github.com/asciidoctor/asciidoctor-maven-examples

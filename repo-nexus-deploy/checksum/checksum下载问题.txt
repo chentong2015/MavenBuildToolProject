@@ -1,0 +1,6 @@
+在构建项目时可能会遇到checksum验证出错的问题
+"Checksum validation failed, no checksums available"
+
+1. Nexus repo缺少相应的依赖
+2. Nexus repo缺少依赖所使用的传递性依赖
+   (在runtime时所需要的依赖, 在运行时需要被添加到项目的Classpath路径中的依赖)

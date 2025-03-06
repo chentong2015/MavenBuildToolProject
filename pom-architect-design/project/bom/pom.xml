@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>project</artifactId>
+        <groupId>com.pom.master</groupId>
+        <version>v1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- TODO. 这里的groupId会统一和parent的名称一致, 方便进行"Importing Dependencies" !!
+       <groupId></groupId> -->
+    <!-- TODO. 这个bom module的目的是将pom-master中的sub module配置到<dependencyManagement>中
+         以便引入这个pom的child可以简化使用 -->
+    <artifactId>bom</artifactId>
+    <packaging>pom</packaging>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.pom.master</groupId>
+                <artifactId>application</artifactId>
+                <version>v1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pom.master</groupId>
+                <artifactId>app-core</artifactId>
+                <version>v1.0.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- 写在dependencyManagement中的依赖可以直接在这里使用 -->
+    </dependencies>
+</project>

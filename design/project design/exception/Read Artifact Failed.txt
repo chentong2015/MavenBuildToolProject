@@ -1,0 +1,12 @@
+Maven 在构建项目时出现如下错误: 无法找到更新的artifact版本
+Failed to read artifact descriptor for com.example.main.common:test-data-utils:jar:0.3b-SNAPSHOT:
+Could not find artifact com.example.main:testing:pom:0.3b-SNAPSHOT
+
+解决方案:
+1. 通过配置IDEA Maven, 强制检查远程仓库库上丢失的版本和更新的快照
+   Maven Setting > Always update snapshots
+
+2. 通过命令强制获取更新的artifacts并构建项目
+  > mvn -U clean install
+  -U forces a check for updated releases and snapshots on remote repositories.
+
