@@ -1,5 +1,8 @@
-JavaDoc插件的高级用法  自定义输出的文档
+JavaDoc插件在项目特定阶段自动生成代码API文档
+JavaDoc将API文档页面打包到/apidoc目录中
+JavaDoc将API文档集成到.jar包中用于部署
 
+JavaDoc插件自定义输出的文档
 <plugin>
    <groupId>org.apache.maven.plugins</groupId>
    <artifactId>maven-javadoc-plugin</artifactId>
@@ -7,7 +10,7 @@ JavaDoc插件的高级用法  自定义输出的文档
    <configuration>
        <outputDirectory>${project.build.directory}</outputDirectory>
 
-       TODO. 设置生成JavaDoc时使用的编码格式(当源码中包含特殊字符时)
+       <!-- TODO. 设置生成JavaDoc时使用的编码格式(当源码中包含特殊字符时) -->
        <configuration>
             <encoding>UTF-8</encoding>
        </configuration>
